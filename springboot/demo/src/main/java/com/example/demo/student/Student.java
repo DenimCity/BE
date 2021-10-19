@@ -5,7 +5,6 @@ import java.time.LocalDate;
 public class Student {
     private Long id;
     private String name;
-
     private LocalDate dob;
     private String email;
     private Integer age;
@@ -13,7 +12,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String name, LocalDate dob, String email, Integer age) {
+    public Student(Long id, String name, String email, LocalDate dob, Integer age) {
         this.id = id;
         this.name = name;
         this.dob = dob;
