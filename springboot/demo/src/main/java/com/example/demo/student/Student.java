@@ -1,13 +1,9 @@
 package com.example.demo.student;
 
 import java.time.LocalDate;
+import java.time.Period;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -19,24 +15,22 @@ public class Student {
     private String name;
     private LocalDate dob;
     private String email;
+    @Transient
     private Integer age;
 
     public Student() {
     }
 
-    public Student(Long id, String name, String email, LocalDate dob, Integer age) {
-        this.id = id;
+    public Student(String name, LocalDate dob, String email) {
         this.name = name;
         this.dob = dob;
         this.email = email;
-        this.age = age;
     }
 
-    public Student(String name, LocalDate dob, String email, Integer age) {
+    public Student(String name, String email, LocalDate dob) {
         this.name = name;
         this.dob = dob;
         this.email = email;
-        this.age = age;
     }
 
     public Long getId() {
@@ -72,7 +66,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
